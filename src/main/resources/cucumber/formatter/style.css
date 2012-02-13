@@ -47,7 +47,7 @@
 }
 
 .cucumber-report .passed {
-  background-color: #C5D88A;
+  background-color: #00de00;
 }
 
 .cucumber-report .undefined, .cucumber-report .pending {
@@ -59,7 +59,7 @@
 }
 
 .cucumber-report .failed {
-  background-color: #D88A8A;
+  background-color: #e00;
 }
 
 .cucumber-report .tags {

@@ -1,0 +1,56 @@
+<!-- -*- encoding: utf-8 -*- -->
+<!doctype html>
+<html>
+<head>
+#set($H = '#')
+  <meta charset="utf-8">
+  <title>Cucumber Report</title>
+  <link href="style.css" rel="stylesheet">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("#collapse").click(function() {
+      $("section>section").hide();
+    });
+    $("#expand").click(function() {
+      $("section").show();
+    });
+    $("h3").click(function() {
+      $(this).nextAll("section").toggle();
+    });
+  });
+  </script>
+</head>
+<body>
+#macro( styling ) #if ( $failedSteps > 0 ) class="failed" #else class="passed" #end #end
+  <header #styling()>
+    <ul>
+      <li>Features: $features</li>
+      <li>Scenarios: $scenarios ($passedScenarios passed/$failedScenarios failed)</li>
+      <li>Failed steps: $failedSteps</li>
+      <li>Passed steps: $passedSteps</li>
+      <li>Duration: $duration s</li>
+    </ul>
+    <a href="$H" id="collapse">Collapse All</a> - <a href="$H" id="expand">Expand All</a>
+  </header>
+
+<article>
+#foreach( $feature in $allFeatures )
+  <section>
+    <h3>Feature: $feature.value.name</h3>
+    <p>$esc.html($feature.value.description)</p>
+#foreach( $scenario in $feature.children )
+      <p class="$scenario.status">$scenario.value.keyword: $scenario.value.name</p>
+      <section>
+      <ol class="steps">
+#foreach( $step in $scenario.children )
+        <li class="$step.status">$step.value.keyword $esc.html($step.value.name)</li>
+#end
+      </ol>
+      </section>
+#end
+  </section>
+#end
+</article>
+
+</body>

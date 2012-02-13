@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  font: 13px/14px Helvetica, Arial, sans-serif;
+}
+
+article {
+  padding: 10px;
+}
+
+.failed {
+  background-color: #e00;
+  color: #fff;
+  padding: 5px;
+}
+
+.passed {
+  background-color: #65C400;
+  color: #fff;
+  padding: 5px;
+}
+
+h3 {
+  cursor: pointer;
+}
+
+header ul {
+  margin: 0;
+  padding:0;
+  width: 100%;
+}
+
+header li {
+  list-style-type: none;
+  font-weight: bolder;
+}
+
+ol.steps {
+  list-style-type: none;
+}
+
+ol.steps li.passed {
+    background: none repeat scroll 0 0 #DBFFB4;
+    border-bottom: 1px solid #65C400;
+    border-left: 5px solid #65C400;
+    color: #3D7700;
+}
